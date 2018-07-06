@@ -5,3 +5,10 @@
 
 <span class="flag-icon flag-icon-gr"></span>
 <span class="flag-icon flag-icon-gr flag-icon-squared"></span>
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+  <mat-sidenav-content>Main content</mat-sidenav-content>
+</mat-sidenav-container>
+<mat-list>
+  <mat-list-item  *ngFor="let country of countries | async"> {{country.name}} </mat-list-item>
+ </mat-list>

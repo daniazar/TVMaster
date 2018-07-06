@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Country from '../../entities/Country';
+import { Observable} from 'rxjs';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 @Component({
@@ -13,8 +14,15 @@ export class CountryListComponent implements OnInit {
     private afStorage: AngularFireStorage,
     private afs: AngularFirestore) { }
 
+    private countryCollection: AngularFirestoreCollection<Country>;
+    countries: Observable<Country[]>;
+
   ngOnInit() {
+    this.loadCountries();
 
   }
-
+  loadCountries() {
+    this.countryCollection = this.afs.collection<Country>('countries', ref => ref.orderBy('name', 'desc'));
+    this.countries = this.countryCollection.valueChanges();
+  }
 }

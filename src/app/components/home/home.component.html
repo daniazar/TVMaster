@@ -1,12 +1,25 @@
+<mat-toolbar class="header">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+     <span>    {{ 'PAGES.HOME.TITLE' | translate }}  </span>
+     <app-channel-list></app-channel-list>
 
-<mat-toolbar>
-  <span>    {{ 'PAGES.HOME.TITLE' | translate }}  </span>
 </mat-toolbar>
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
-</div>
-<app-channel-list></app-channel-list>
-<app-player></app-player>
-<app-country-list></app-country-list>
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" #snav [mode]="side" [fixedInViewport]="false" >
+        <span>    {{ 'PAGES.HOME.COUNTRY' | translate }}  </span>
+        <mat-nav-list>
+        <app-country-list></app-country-list>
+        </mat-nav-list>
+    </mat-sidenav>
+        
+    <mat-sidenav-content >
+      <h1 class="title">
+        {{ 'PAGES.HOME.TITLE' | translate }}
+      </h1>
+      <app-player></app-player>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+  <mat-toolbar class="footer">Footer</mat-toolbar>
+

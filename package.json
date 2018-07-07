@@ -44,6 +44,7 @@
     "firebase": "^5.2.0",
     "flag-icon-css": "^3.0.0",
     "ngx-youtube-player": "^6.0.0",
+    "spinkit": "^1.2.5",
     "timers": "^0.1.1",
     "zone": "^0.3.4"
   },

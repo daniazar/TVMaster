@@ -1,10 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+
+$flag-icon-css-path: '~flag-icon-css/flags' !default;
+@import "~flag-icon-css/sass/flag-icon";
+// 9
+$spinkit-size: 4em !default;
+$spinkit-spinner-color: #337ab7 !default;
+body {
+  background-color: #1d1f20;
+}
+.sk-cube-grid {
+  $delayRange: 0.4s;
+
+  width: $spinkit-size;
+  height: $spinkit-size;
+  margin: auto;
+
+  .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: $spinkit-spinner-color;
+    float: left;
+    animation: sk-cube-grid-scale-delay 1.3s infinite ease-in-out;
+  }
+
+  /*
+   * Spinner positions
+   * 1 2 3
+   * 4 5 6
+   * 7 8 9
+   */
+
+  .sk-cube-1 {
+    animation-delay: ($delayRange * 0.50);
+  }
+  .sk-cube-2 {
+    animation-delay: ($delayRange * 0.75);
+  }
+  .sk-cube-3 {
+    animation-delay: $delayRange;
+  }
+  .sk-cube-4 {
+    animation-delay: ($delayRange * 0.25);
+  }
+  .sk-cube-5 {
+    animation-delay: ($delayRange * 0.50);
+  }
+  .sk-cube-6 {
+    animation-delay: ($delayRange * 0.75);
+  }
+  .sk-cube-7 {
+    animation-delay: 0s;
+  }
+  .sk-cube-8 {
+    animation-delay: ($delayRange * 0.25);
+  }
+  .sk-cube-9 {
+    animation-delay: ($delayRange * 0.50);
+  }
+}
+
+@keyframes sk-cube-grid-scale-delay {
+  0%, 70%, 100% {
+    transform: scale3D(1,1,1);
+  }
+  35%           {
+    transform: scale3D(0,0,1);
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
 
   height: 100%;
 }
+.loading {
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #272c33;
+  padding-top: 25vh;
+  text-align: center;
+  z-index: -1;
+  transition: opacity .8s ease-out;
+}
 
-$flag-icon-css-path: '~flag-icon-css/flags' !default;
-@import "~flag-icon-css/sass/flag-icon";
+app-root:empty + .loading {
+opacity: 1;
+z-index: 100;
+h1 {
+  font-family: "courier", monospace;
+  color: #EEE;
+  margin-bottom: 50px;
+}
+}

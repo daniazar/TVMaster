@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Country from '../../entities/Country';
 import { Observable} from 'rxjs';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 @Component({
   selector: 'app-country-list',
@@ -9,7 +9,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
   styleUrls: ['./country-list.component.scss']
 })
 export class CountryListComponent implements OnInit {
-  countryList : Country[];
+  countries : Country[];
   constructor(
     private afStorage: AngularFireStorage,
     private afs: AngularFirestore) { }

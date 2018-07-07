@@ -1,7 +1,9 @@
 {
   "PAGES": {
       "HOME": {
-          "TITLE": "TV Master"
+          "TITLE": "TV Master",
+          "COUNTRY": "Select Country",
+          "CHANNEL": "Select Channel"
       }
   }
 }

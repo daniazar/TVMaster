@@ -29,7 +29,7 @@ import { WebviewDirective } from './directives/webview.directive';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PlayerComponent } from './components/player/player.component';
-import { ChannelListComponent } from './components/channel-list/channel-list.component';
+import { ChannelListComponent, ChannelSheet } from './components/channel-list/channel-list.component';
 import { CountryListComponent } from './components/country-list/country-list.component';
 import {
   MatAutocompleteModule,
@@ -80,8 +80,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     PlayerComponent,
     ChannelListComponent,
+    ChannelSheet,
     CountryListComponent
   ],
+  entryComponents: [ChannelSheet],
   imports: [
     BrowserModule,
     YoutubePlayerModule,

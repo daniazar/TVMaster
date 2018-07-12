@@ -2,19 +2,18 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 import Channel from '../../entities/Channel';
 import { Observable} from 'rxjs';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-
+import {ChannelService} from '../../services/channel/channel.service';
 @Component({
   selector: 'app-channel-list',
   templateUrl: './channel-list.component.html',
   styleUrls: ['./channel-list.component.scss']
 })
 export class ChannelListComponent implements OnInit {
-  channels : Channel[];
+  channels : Observable<Channel[]>;
+  private channelCollection;
   constructor(private bottomSheet: MatBottomSheet,
-      private afStorage: AngularFireStorage,
-      private afs: AngularFirestore) {}
+    private channelService : ChannelService 
+) {}
  
     openBottomSheet(): void {
       console.log(this.channels);
@@ -28,8 +27,7 @@ export class ChannelListComponent implements OnInit {
     }
 
     loadChannels() {
-      this.channelCollection = this.afs.collection<Channel>('channels', ref => ref.orderBy('name', 'desc'));
-      this.channels = this.channelCollection.valueChanges();
+      this.channels = this.channelService.getChannelList();
     }
   }
   
@@ -38,6 +36,7 @@ export class ChannelListComponent implements OnInit {
     templateUrl: 'channels-bottom-sheet.html',
   })
   export class ChannelSheet {
+    private bottomSheetRef;
     constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
       this.channels = data;
     }
@@ -47,7 +46,3 @@ export class ChannelListComponent implements OnInit {
       event.preventDefault();
     }
   }
-  
-
-
-}

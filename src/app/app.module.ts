@@ -18,6 +18,9 @@ import { AngularFireStorageModule,
         AngularFireStorage,
         AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
+
+//import {ChannelService} from './services/channel/channel.service';
+
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';

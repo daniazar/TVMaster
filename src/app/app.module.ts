@@ -29,6 +29,16 @@ import { ElectronService } from './providers/electron.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
+
+
+
+import { CoreModule } from './core';
+
+//import { SettingsModule } from './settings';
+
+//import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PlayerComponent } from './components/player/player.component';
@@ -88,6 +98,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   entryComponents: [ChannelSheet],
   imports: [
+    CoreModule,
+    //SettingsModule,
     BrowserModule,
     YoutubePlayerModule,
     FormsModule,

@@ -1,11 +1,12 @@
-export default class Channel{
-    country : String;
-    name : String;
-    id : String;
-    url : String;
-    logo : String;
-    desc : String;
 
+export default class Channel{
+    country : string;
+    name : string;
+    id : string;
+    url : any;
+    logo : string;
+    desc : string;
+    youtube : boolean;
     constructor(){
 
     }

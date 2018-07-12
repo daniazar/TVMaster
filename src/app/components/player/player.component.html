@@ -1,3 +1,8 @@
-<p>
-  player works!
-</p>
+<div class="title">
+  <h3>{{channel.name}}</h3>
+  <span>{{channel.desc}}</span>
+  
+</div>
+<div class="player" *ngIf="channel.name">
+  <iframe class="playerFrame" [src]="channel.url" frameborder="0" allowfullscreen></iframe>
+</div>

@@ -7,6 +7,7 @@ export const AppConfig = {
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
+  test: false,
   firebase: {
     apiKey: "AIzaSyAhBBDwSTagR_D3P4bKGoTkgi96dtk7vT4",
     authDomain: "tv-master-67d96.firebaseapp.com",

@@ -36,13 +36,18 @@ export class ChannelListComponent implements OnInit {
     templateUrl: 'channels-bottom-sheet.html',
   })
   export class ChannelSheet {
-    private bottomSheetRef;
-    constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
+    constructor (private bottomSheetRef: MatBottomSheetRef<ChannelSheet>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,     private channelService : ChannelService 
+  ) {
       this.channels = data;
     }
     channels : Channel[];
     openLink(event: MouseEvent): void {
       this.bottomSheetRef.dismiss();
       event.preventDefault();
+    }
+
+    setChannel(channel: Channel){
+      this.channelService.setChannel(channel);
+      this.bottomSheetRef.dismiss();
     }
   }

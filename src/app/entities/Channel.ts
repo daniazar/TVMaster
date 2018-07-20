@@ -6,7 +6,6 @@ export default class Channel{
     url : any;
     logo : string;
     desc : string;
-    youtube : boolean;
     constructor(){
 
     }

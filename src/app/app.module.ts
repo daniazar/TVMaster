@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -44,6 +46,8 @@ import { HomeComponent } from './components/home/home.component';
 import { PlayerComponent } from './components/player/player.component';
 import { ChannelListComponent, ChannelSheet } from './components/channel-list/channel-list.component';
 import { CountryListComponent } from './components/country-list/country-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -81,6 +85,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -94,7 +100,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     PlayerComponent,
     ChannelListComponent,
     ChannelSheet,
-    CountryListComponent
+    CountryListComponent,
+    UserProfileComponent,
+    UserLoginComponent,
+    LoginFormComponent
   ],
   entryComponents: [ChannelSheet],
   imports: [
@@ -144,6 +153,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFirestoreModule,
     AngularFireStorageModule,
     // To initialize AngularFire
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     TranslateModule.forRoot({
       loader: {

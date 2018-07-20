@@ -55,7 +55,7 @@ export class ChannelService {
   }
   setChannel(channel :Channel) {
     console.log(channel);
-    if(! (channel.url instanceof Object){
+    if(! (channel.url instanceof Object)){
       if( channel.url.includes('youtube')){
         channel.url = 'https://www.youtube.com/embed/' +this.youtube_parser(channel.url);
       }

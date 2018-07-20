@@ -26,7 +26,9 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/theme.scss"
+              "src/theme.scss",
+              "node_modules/material-design-icons/iconfont/material-icons.css"
+
             ],
             "scripts": []
           },
@@ -104,7 +106,12 @@
               "src/favicon.png",
               "src/favicon.icns",
               "src/favicon.256x256.png",
-              "src/favicon.512x512.png"
+              "src/favicon.512x512.png",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/ngx-auth-firebaseui/assets/",
+                "output": "./assets/"
+              }
             ]
           }
         },

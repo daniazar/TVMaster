@@ -6,6 +6,7 @@
 
 @include mat-core();
 
+@import 'app/components/home/home.component.scss';
 @import 'themes/default-theme.scss';
 @import 'themes/light-theme.scss';
 @import 'themes/black-theme.scss';
@@ -15,29 +16,30 @@
 //@import 'app/app.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
-  @include anms-styles-reset-theme($theme);
- // @include anms-app-component-theme($theme);
+  @include tvm-styles-reset-theme($theme);
+ // @include tvm-app-component-theme($theme);
+ @include tvm-home-component-theme($theme);
 
 }
 
 .default-theme {
-  @include angular-material-theme($anms-theme);
-  @include custom-components-theme($anms-theme);
+  @include angular-material-theme($tvm-theme);
+  @include custom-components-theme($tvm-theme);
 }
 
 .light-theme {
-  @include angular-material-theme($anms-light-theme);
-  @include custom-components-theme($anms-light-theme);
+  @include angular-material-theme($tvm-light-theme);
+  @include custom-components-theme($tvm-light-theme);
 }
 
 .black-theme {
-  @include angular-material-theme($anms-black-theme);
-  @include custom-components-theme($anms-black-theme);
+  @include angular-material-theme($tvm-black-theme);
+  @include custom-components-theme($tvm-black-theme);
 }
 
 .nature-theme {
-  @include angular-material-theme($anms-nature-theme);
-  @include custom-components-theme($anms-nature-theme);
+  @include angular-material-theme($tvm-nature-theme);
+  @include custom-components-theme($tvm-nature-theme);
 }
 
 @import 'styles2';

@@ -1,30 +1,15 @@
-<mat-toolbar class="header">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-     <span>    {{ 'PAGES.HOME.TITLE' | translate }}  </span>
-     <app-channel-list></app-channel-list>
-     <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
-      <mat-icon> menu</mat-icon>
-    </button>
-
-</mat-toolbar>
-<mat-sidenav-container class="container">
-    <mat-sidenav class="sidenav" #snav [mode]="side" [fixedInViewport]="false" >
-        <span>    {{ 'PAGES.HOME.COUNTRY' | translate }}  </span>
-        <mat-nav-list>
-        <app-country-list></app-country-list>
-        </mat-nav-list>
-    </mat-sidenav>
-        
-    <mat-sidenav-content >
-            <user-profile></user-profile>
-            <ngx-auth-firebaseui></ngx-auth-firebaseui>
-            <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user>
-
-    <app-player></app-player>
-
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-
-  <mat-toolbar class="footer">Footer</mat-toolbar>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Welcome to TV Master</mat-card-title>
+        <mat-card-subtitle>a place for all tv lovers who work on computer</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        This site is free to use and a work in progress. Please understand that we do this on our free time so some channel may stop working sometimes.
+        If that happen please contribute by reporting that channel so we can update it.
+    </mat-card-content>
+</mat-card>
 
 
+
+
+  

@@ -1,4 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject, Subscription } from 'rxjs';
+
+export class AnimationSettings{
+  
+  wholePage : boolean;
+  elementSlide : boolean;
+  constructor( whole: boolean, slide : boolean){
+    this.wholePage = whole;
+    this.elementSlide = slide;
+  }
+}
 
 @Injectable()
 export class AnimationsService {
@@ -19,6 +30,18 @@ export class AnimationsService {
         ? 'ALL'
         : pageAnimations ? 'PAGE' : elementsAnimations ? 'ELEMENTS' : 'NONE';
   }
+
+  private animationSubject = new BehaviorSubject<AnimationSettings>(new AnimationSettings(false, false));
+
+  getAnimation() : Observable<AnimationSettings> {
+    return this.animationSubject.asObservable();
+  }
+  setAnimation(animation : AnimationSettings) {
+    this.animationSubject.next(animation);
+    this.updateRouteAnimationType(animation.wholePage, animation.elementSlide);
+  }
+
+
 }
 
 export type RouteAnimationType = 'ALL' | 'PAGE' | 'ELEMENTS' | 'NONE';

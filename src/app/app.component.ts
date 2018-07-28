@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import {ThemeService} from './core/theme.service';
+import { AnimationsService } from './core';
+import { AuthService } from './core/auth.service';
 
 const NIGHT_MODE_THEME = 'BLACK-THEME';
 @Component({
@@ -17,7 +19,10 @@ export class AppComponent implements OnInit{
   
   constructor(public electronService: ElectronService,
     private overlayContainer: OverlayContainer,
-    private translate: TranslateService, private themeService :ThemeService)  {
+    private translate: TranslateService, private themeService :ThemeService,
+    private animationService: AnimationsService,
+    public auth: AuthService
+  )  {
 
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
@@ -34,9 +39,13 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.themeService.getTheme().subscribe(theme => {
       this.setTheme(theme.theme, theme.nightMode);
-    }
-      
-    );
+    });
+    this.animationService.getAnimation().subscribe(animation => {
+      this.animationService.updateRouteAnimationType(
+        animation.wholePage,
+        animation.elementSlide
+      );
+    });
   }
 
   private setTheme(theme, autoNightMode) {

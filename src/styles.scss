@@ -6,7 +6,8 @@
 
 @include mat-core();
 
-@import 'app/components/home/home.component.scss';
+//@import 'app/components/home/home.component.scss';
+@import 'app/app.component.scss';
 @import 'themes/default-theme.scss';
 @import 'themes/light-theme.scss';
 @import 'themes/black-theme.scss';
@@ -18,7 +19,7 @@
 @mixin custom-components-theme($theme) {
   @include tvm-styles-reset-theme($theme);
  // @include tvm-app-component-theme($theme);
- @include tvm-home-component-theme($theme);
+ @include tvm-app-component-theme($theme);
 
 }
 

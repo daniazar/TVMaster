@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-0
+
 import { environment } from '../../environments/environment';
 
 import { LocalStorageService } from './local-storage/local-storage.service';
@@ -11,6 +11,9 @@ import { AuthService } from './auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {ThemeService} from './theme.service'; 
+import { SettingsComponent } from './settings/settings.component';
+import { MatIconModule, MatSelectModule, MatSlideToggleModule, MatCardModule } from '../../../node_modules/@angular/material';
+import { FormsModule } from '../../../node_modules/@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,10 +22,17 @@ import {ThemeService} from './theme.service';
     HttpClientModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    MatIconModule,
+    FormsModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatCardModule       
   ],
   exports: [
   ],
-  declarations: [],
+  declarations: [
+    SettingsComponent
+  ],
   providers: [LocalStorageService, AnimationsService, AuthService, ThemeService]
 })
 export class CoreModule {

@@ -14,14 +14,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class ChannelService {
   private channels : Observable<Channel[]>;
   private sub : Subscription;
-  private channelSubject = new BehaviorSubject<Channel>(new Channel);
-
+  private channelSubject = new BehaviorSubject<Channel>(null);
+  currChannel : Channel[];
   private channelCollection: AngularFirestoreCollection<Channel>;
   constructor(
     private afStorage: AngularFireStorage,
     private afs: AngularFirestore,
     private sanitizer: DomSanitizer) {}
-  private channelsSubject = new BehaviorSubject<Channel[]>([]);
+  private channelsSubject = new BehaviorSubject<Channel[]>(null);
 
   loadChannels() {
     console.log("loading channels ");
@@ -29,6 +29,7 @@ export class ChannelService {
     this.channels = this.channelCollection.valueChanges();
     this.sub = this.channels.subscribe(
       channels => {
+        this.currChannel =channels;
         this.sendChannelList(channels)
         this.sub.unsubscribe();
       }
@@ -52,6 +53,16 @@ export class ChannelService {
   }
   getChannel() : Observable<Channel> {
     return this.channelSubject.asObservable();
+  }
+  setChannelByName(name : string){
+    if(this.currChannel){
+      console.log(this.currChannel);
+      let chan =this.currChannel.find(
+        element => name === (element.name)
+      );
+      this.setChannel(chan);
+  
+    }
   }
   setChannel(channel :Channel) {
     console.log(channel);

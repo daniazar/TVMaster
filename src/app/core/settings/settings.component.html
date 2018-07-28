@@ -1,0 +1,60 @@
+    <mat-card>
+    <mat-card-title>
+        <h2>Themes</h2>
+    </mat-card-title>
+    <mat-card-content>	
+    <div class="icon-form-field">
+      <mat-icon fontSet="fas" fontIcon="fa-paint-brush" color="accent"></mat-icon>
+      <mat-form-field>
+        <mat-select placeholder="Color theme"
+                    [(ngModel)]="currentTheme"
+                    (selectionChange)="setTheme()">
+          <mat-option *ngFor="let t of themes; let i = index" [value]="i">
+            {{t.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="icon-form-field">
+      <mat-icon fontSet="fas" fontIcon="fa-lightbulb" color="accent"></mat-icon>
+      <mat-placeholder>Auto night mode (from 21:00 to 7:00)</mat-placeholder>
+      <mat-slide-toggle
+        [(ngModel)] = "nightMode"
+        (change)="setTheme()">
+      </mat-slide-toggle>
+    </div>
+  </mat-card-content>	
+</mat-card>
+
+
+<mat-card>
+    <mat-card-title>
+        <h2>Animations</h2>
+      </mat-card-title>
+    <mat-card-content>	
+    <div class="icon-form-field">
+      <mat-icon fontSet="fas" fontIcon="fa-window-maximize" color="accent"></mat-icon>
+      <mat-placeholder>Navigation whole page transition</mat-placeholder>
+      <mat-slide-toggle
+        matTooltip="Sorry, this feature is disabled in IE and EDGE"
+        matTooltipPosition="before"
+        *ngIf="settings?.pageAnimationsDisabled"
+        disabled>
+      </mat-slide-toggle>
+      <mat-slide-toggle
+        *ngIf="!settings?.pageAnimationsDisabled"
+        [checked]="settings?.pageAnimations"
+        (change)="setAnimation()">
+      </mat-slide-toggle>
+    </div>
+    <div class="icon-form-field">
+      <mat-icon fontSet="fas" fontIcon="fa-stream" color="accent"></mat-icon>
+      <mat-placeholder>Navigation page elements slide up</mat-placeholder>
+      <mat-slide-toggle
+          [(ngModel)] = "slide"
+          [checked]="settings?.elementsAnimations"
+        (change)="setAnimation()">
+      </mat-slide-toggle>
+    </div>
+  </mat-card-content>	
+</mat-card>

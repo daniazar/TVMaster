@@ -1,0 +1,280 @@
+@import '../styles-variables';
+mat-toolbar{
+  span{
+    img{
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .sidenav{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    //width: 200px;
+    //background: rgba(255, 0, 0, 0.5);
+  }
+  .container{
+    position: absolute;
+    top: 56px;
+    bottom: 56px;
+    left:0px;
+    right:0px; 
+  }
+  .container2 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    //background: url(../../../assets/background.jpg) no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+  
+    .title {
+      //color: white;
+      margin:0;
+      padding:50px 20px;
+    }
+  
+  }
+.toolbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+
+  .nav-button {
+    margin: 0 10px 0 0;
+  }
+
+  mat-icon {
+    font-size: 24px;
+  }
+
+  .branding {
+    cursor: pointer;
+    padding-top: 4px;
+
+    &.center {
+      text-align: center;
+    }
+
+    img {
+      position: relative;
+      top: -2px;
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .sign-in-button {
+    line-height: 35px;
+    margin-right: 10px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+    .nav-button {
+      min-width: 0;
+      padding: 0 10px;
+    }
+    .sign-in-button {
+      min-width: 0;
+      padding: 0 10px;
+      margin: 0 5px 0 0;
+    }
+  }
+
+.wrapper {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .content {
+    position: relative;
+    flex: 1 0 auto;
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    padding: 0 15px;
+    text-align: center;
+
+    .row {
+      padding: 10px 0;
+
+      .links {
+        a {
+          transition: padding 0.5s;
+          display: inline-block;
+          padding: 20px 5px;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          mat-icon {
+            font-size: 30px;
+            width: 35px;
+          }
+
+          span {
+            display: inline-block;
+            width: 75px;
+            padding: 0 0 0 3px;
+            overflow: hidden;
+            text-align: left;
+            white-space: nowrap;
+            transition: width 0.5s;
+          }
+        }
+
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+          a {
+            padding: 20px 10px;
+          }
+        }
+
+        @media (max-width: map-get($grid-breakpoints, md)) {
+          a {
+            padding: 20px;
+
+            span {
+              width: 0;
+              padding: 0;
+            }
+          }
+        }
+
+        @media (max-width: map-get($grid-breakpoints, sm)) {
+          a {
+            padding: 20px 5px;
+          }
+        }
+      }
+
+      @media (min-width: map-get($grid-breakpoints, sm)) {
+        .signature {
+          position: relative;
+
+          a {
+            position: absolute;
+            right: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+  .wrapper {
+    top: 56px;
+  }
+}
+  
+  
+  mat-sidenav {
+    width: 250px;
+  
+    .branding {
+      height: 64px;
+      padding: 8px 10px;
+      font-size: 20px;
+      font-weight: 500;
+  
+      img {
+        height: 48px;
+        margin: 2px 10px 0 0;
+      }
+  
+      span {
+        position: relative;
+        top: 3px;
+      }
+    }
+  
+    .mat-nav-list {
+      padding-top: 0;
+    }
+  }
+  
+ 
+ 
+  @import '~@angular/material/theming';
+  
+  @mixin tvm-app-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    mat-toolbar {
+        color: mat-color($primary);
+        button {
+        &.active {
+          color: mat-color($accent, default-contrast);
+          background-color: mat-color($accent);
+        }
+      }
+    }
+    mat-sidenav-container {
+      mat-toolbar {
+        button {
+          &.active {
+            color: mat-color($accent, default-contrast);
+            background-color: mat-color($accent);
+          }
+        }
+  
+        .sign-in-button {
+          color: mat-color($accent);
+          border: 1px solid mat-color($accent);
+        }
+  
+        .link {
+          color: mat-color($primary, default-contrast);
+        }
+      }
+  
+      mat-sidenav {
+        .mat-list-item {
+          &.active {
+            color: mat-color($accent, default-contrast);
+            background-color: mat-color($accent) !important;
+  
+            &:hover {
+              background-color: mat-color($accent, darker) !important;
+            }
+          }
+        }
+      }
+  
+      .footer {
+        color: mat-color($primary, lighter);
+        background-color: mat-color($primary, darker);
+  
+        .links,
+        .signature {
+          a {
+            color: mat-color($primary, lighter);
+            &:hover {
+              color: mat-color($accent);
+            }
+          }
+        }
+      }
+    }
+  }
+  

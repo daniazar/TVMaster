@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -87,6 +87,8 @@ import {
 } from '@angular/material';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ChannelPageComponent } from './components/channel-page/channel-page.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -103,7 +105,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CountryListComponent,
     UserProfileComponent,
     UserLoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ChannelPageComponent,
+    AboutPageComponent
   ],
   entryComponents: [ChannelSheet],
   imports: [
@@ -112,6 +116,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     YoutubePlayerModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,

@@ -1,6 +1,6 @@
 <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let channel of channels | async">
-    <button mat-raised-button mat-list-item (click)="setChannel(channel)">
+    <button mat-raised-button mat-list-item routerLink="channel/{{channel.name}}" routerLinkActive="active" (click)="setChannel(channel)">
         <img src={{channel.logo}}>
       <mat-nav-list>
         <span mat-line> {{channel.name}}</span>

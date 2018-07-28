@@ -3,7 +3,8 @@
       "HOME": {
           "TITLE": "TV Master",
           "COUNTRY": "Select Country",
-          "CHANNEL": "Select Channel"
+          "CHANNEL": "Select Channel",
+          "LOGIN" : "Login"
       }
   }
 }

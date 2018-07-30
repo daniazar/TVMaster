@@ -1,12 +1,12 @@
 @import '../styles-variables';
 mat-toolbar{
-  span{
-    img{
-      width: 60px;
-      height: 60px;
+.logo{
+      width: 30px;
+      height: 30px;
+      top: 7px;
+      position: relative;
     }
   }
-}
 .footer {
     position: fixed;
     bottom: 0;

@@ -3,7 +3,7 @@ import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from 'angularfire2/firestore';
 import Channel from '../../entities/Channel';
 import { unwatchFile } from 'fs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -27,6 +27,9 @@ export class ChannelService {
     console.log("loading channels ");
     this.channelCollection = this.afs.collection<Channel>('channels', ref => ref.orderBy('name', 'desc'));
     this.channels = this.channelCollection.valueChanges();
+
+
+    
     this.sub = this.channels.subscribe(
       channels => {
         this.currChannel =channels;
@@ -38,8 +41,6 @@ export class ChannelService {
   }
 
   sendChannelList(message: Channel[]) {
-    console.log("channel list: " + message);
-
       this.channelsSubject.next( message );
   }
 
@@ -56,7 +57,6 @@ export class ChannelService {
   }
   setChannelByName(name : string){
     if(this.currChannel){
-      console.log(this.currChannel);
       let chan =this.currChannel.find(
         element => name === (element.name)
       );
@@ -65,12 +65,14 @@ export class ChannelService {
     }
   }
   setChannel(channel :Channel) {
-    console.log(channel);
+    channel.originalUrl = channel.url;
     if(! (channel.url instanceof Object)){
       if( channel.url.includes('youtube')){
         channel.url = 'https://www.youtube.com/embed/' +this.youtube_parser(channel.url);
       }
+
     channel.url = this.sanitizer.bypassSecurityTrustResourceUrl(channel.url);
+
   }
     this.channelSubject.next(channel);
   }
@@ -80,4 +82,13 @@ export class ChannelService {
     var match = url.match(regExp);
     return (match&&match[7].length==11)? match[7] : false;
 }
+
+createChannel( channel :Channel){
+  if( ! channel.id){
+    channel.id = this.afs.createId();
+  }
+    channel.url = channel.originalUrl;
+  return this.afs.collection('channels').doc(channel.id).set(channel);
+  
+  }
 }

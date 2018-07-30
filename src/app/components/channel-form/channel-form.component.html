@@ -1,0 +1,26 @@
+<form fxLayout="column"  [formGroup]="channelFormGroup" [hidden] = "success" (ngsubmit)="submitHandler()">
+
+
+  <mat-form-field fxFlex>
+    <input matInput placeholder="name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput placeholder="description" formControlName="desc">
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput placeholder="url" formControlName="originalUrl">
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput placeholder="logo" formControlName="logo">
+  </mat-form-field>
+
+  <mat-form-field fxFlex>
+    <input matInput placeholder="country code" formControlName="country">
+  </mat-form-field>
+
+  
+  <button fxFlex="grow" type="submit" (click)="submitHandler()"  mat-raised-button [disabled]="channelFormGroup.invalid" color="primary" >value</button>
+</form>

@@ -1,6 +1,6 @@
 <div class="playerConatiner" *ngIf="channel">
     <mat-card-header>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/channelForm/{{channel.name}}">
         <mat-icon mat-card-avatar aria-label="label" color="error">error</mat-icon>
       </button>
       <mat-card-title>{{channel.name}}</mat-card-title>

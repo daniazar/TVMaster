@@ -1,17 +1,20 @@
 <mat-toolbar color="primary" class="header" class="toolbar">
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-        <span  class="branding  center" routerLink="">
-            <span>            <img src="favicon.png"/>
+        <button mat-button routerLink="">
+                <span>            <img class="logo" src="favicon.png"/>
+                </span>
+                <span>
+                {{ 'PAGES.HOME.TITLE' | translate }}
             </span>
-            <span>
-            {{ 'PAGES.HOME.TITLE' | translate }}
-        </span>
-        </span>
+
+        </button>
               <div class="spacer"></div>        
 
          <app-channel-list class="nav-button"></app-channel-list>
          <div class="spacer"></div>        
-
+         <button mat-button class="nav-button" routerLink="about" routerLinkActive="active">
+            About
+      </button>
          <button mat-button class="nav-button" routerLink="about" routerLinkActive="active">
                 About
           </button>
@@ -23,6 +26,7 @@
         <button mat-icon-button routerLink="settings" routerLinkActive="active" sclass="d-none d-sm-inline">
                 <mat-icon> settings</mat-icon>
         </button>
+
 
 </mat-toolbar>
     

@@ -28,6 +28,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   slide : boolean = true;
 
   constructor(private themeService : ThemeService, private animationService : AnimationsService) {
+
   }
 
   setTheme( ){
@@ -40,7 +41,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setTheme();
+    //this.setTheme();
   }
 
   ngOnDestroy(): void {

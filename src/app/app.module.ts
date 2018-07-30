@@ -89,6 +89,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ChannelPageComponent } from './components/channel-page/channel-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { ChannelFormComponent } from './components/channel-form/channel-form.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -107,7 +108,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserLoginComponent,
     LoginFormComponent,
     ChannelPageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    ChannelFormComponent
   ],
   entryComponents: [ChannelSheet],
   imports: [

@@ -1,0 +1,4 @@
+
+<mat-list role="list" *ngFor="let report of reportService.getReportList() | async">
+    <mat-list-item role="listitem">{{report.name}} {{report.date | date }} {{report.mail}}</mat-list-item>
+  </mat-list>

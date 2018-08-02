@@ -6,6 +6,7 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 import {ThemeService} from './core/theme.service';
 import { AnimationsService } from './core';
 import { AuthService } from './core/auth.service';
+import { ChannelService } from './services/channel/channel.service';
 
 const NIGHT_MODE_THEME = 'BLACK-THEME';
 @Component({
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit{
     private overlayContainer: OverlayContainer,
     private translate: TranslateService, private themeService :ThemeService,
     private animationService: AnimationsService,
-    public auth: AuthService
+    public auth: AuthService,
+    public channelService : ChannelService
   )  {
 
     translate.setDefaultLang('en');
@@ -37,6 +39,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.channelService.loadChannels(); 
+
     this.themeService.getTheme().subscribe(theme => {
       this.setTheme(theme.theme, theme.nightMode);
     });

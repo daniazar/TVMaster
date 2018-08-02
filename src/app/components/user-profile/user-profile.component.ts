@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { routeAnimations } from '../../core';
+import { AuthProvider } from '../../../../node_modules/ngx-auth-firebaseui';
 
 @Component({
   selector: 'user-profile',
@@ -13,5 +14,5 @@ export class UserProfileComponent {
 
 
   constructor(public auth: AuthService) { }
-
+  providers = AuthProvider;
 }

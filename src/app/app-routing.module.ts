@@ -6,6 +6,7 @@ import { SettingsComponent } from './core/settings/settings.component';
 import { ChannelPageComponent } from './components/channel-page/channel-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ChannelFormComponent } from './components/channel-form/channel-form.component';
+import { ResportsPageComponent } from './components/resports-page/resports-page.component';
 
 const routes: Routes = [
     {
@@ -34,7 +35,15 @@ const routes: Routes = [
       path: 'channelForm/:channel',
       component: ChannelFormComponent
   },
-    {
+  {
+    path: 'channelForm',
+    component: ChannelFormComponent
+},
+{
+  path: 'reports',
+  component: ResportsPageComponent
+},
+  {
       path: 'about',
       component: AboutPageComponent
   },

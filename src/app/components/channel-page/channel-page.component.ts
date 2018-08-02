@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelService } from '../../services/channel/channel.service';
-import { Subscription } from '../../../../node_modules/rxjs';
+import { Subscription } from 'rxjs';
 import Channel from '../../entities/Channel';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-channel-page',

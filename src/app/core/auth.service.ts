@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { auth } from 'firebase/app';
+import { auth } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
@@ -14,6 +14,7 @@ interface User {
   photoURL?: string;
   displayName?: string;
   favoriteColor?: string;
+  isAdmin? : boolean;
 }
 
 
@@ -86,6 +87,12 @@ export class AuthService {
 
   get currentUser(): any {
     return this.user;
+  }
+  get isAdmin() : boolean{
+    if ( this.currentUser){
+      return this.currentUser.isAdmin;
+    }
+    return false;
   }
   get currentUserId(): string {
     return this.user.uid || '';

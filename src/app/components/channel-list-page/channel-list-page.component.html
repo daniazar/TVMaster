@@ -1,0 +1,12 @@
+
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+  <button class="channelButton" mat-raised-button mat-list-item routerLink="channel/{{channel.name}}" routerLinkActive="active" (click)="setChannel(channel)"
+    fxFlex *ngFor="let channel of channels | async">
+      <img class="channelLogo" src={{channel.logo}}>
+      <mat-nav-list>
+        <span mat-line> {{channel.name}}</span>
+      </mat-nav-list>
+  </button>
+
+</div>

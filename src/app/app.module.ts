@@ -84,12 +84,15 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ChannelPageComponent } from './components/channel-page/channel-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ChannelFormComponent } from './components/channel-form/channel-form.component';
+import { ChannelListPageComponent } from './components/channel-list-page/channel-list-page.component';
+import { ResportsPageComponent } from './components/resports-page/resports-page.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -109,7 +112,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginFormComponent,
     ChannelPageComponent,
     AboutPageComponent,
-    ChannelFormComponent
+    ChannelFormComponent,
+    ChannelListPageComponent,
+    ResportsPageComponent
   ],
   entryComponents: [ChannelSheet],
   imports: [
@@ -171,7 +176,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService,
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

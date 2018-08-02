@@ -10,7 +10,6 @@ import {ChannelService} from '../../services/channel/channel.service';
 })
 export class ChannelListComponent implements OnInit {
   channels : Observable<Channel[]>;
-  private channelCollection;
   constructor(private bottomSheet: MatBottomSheet,
     private channelService : ChannelService 
 ) {}

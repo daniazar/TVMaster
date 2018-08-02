@@ -22,7 +22,7 @@ export class ChannelService {
     private afs: AngularFirestore,
     private sanitizer: DomSanitizer) {}
   private channelsSubject = new BehaviorSubject<Channel[]>(null);
-
+    
   loadChannels() {
     console.log("loading channels ");
     this.channelCollection = this.afs.collection<Channel>('channels', ref => ref.orderBy('name', 'desc'));
@@ -33,6 +33,7 @@ export class ChannelService {
     this.sub = this.channels.subscribe(
       channels => {
         this.currChannel =channels;
+        console.log(this.currChannel);
         this.sendChannelList(channels)
         this.sub.unsubscribe();
       }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import Channel from '../../entities/Channel';
-import { Subscription } from '../../../../node_modules/rxjs';
+import { Subscription } from 'rxjs';
 import { ChannelService } from '../../services/channel/channel.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-channel-form',
@@ -28,6 +28,7 @@ export class ChannelFormComponent implements OnInit {
   success = false;
 
   ngOnInit() {
+    this.channel = new Channel()
     this.sub = this.channelService.getChannel().subscribe(
       channel => {
         this.channel = channel;

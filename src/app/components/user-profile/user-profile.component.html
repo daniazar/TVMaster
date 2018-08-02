@@ -5,13 +5,14 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-    <ngx-auth-firebaseui></ngx-auth-firebaseui>
+    <ngx-auth-firebaseui [providers]="[providers.Google]"></ngx-auth-firebaseui>
 </ng-template>
 
 
 <!-- User logged in -->
 <ng-template #authenticated>
     <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user>
+    <button mat-button routerLink="/reports" routerLinkActive="router-link-active" >Reports Page</button>
     <!--div *ngIf="auth.userObservable | async as user">
     <h3>Howdy, {{ user.displayName }}</h3>
     <img  [src]="user.photoURL">
@@ -20,3 +21,4 @@
     <button (click)="auth.signOut()">Logout</button>
   </div!-->
 </ng-template>
+

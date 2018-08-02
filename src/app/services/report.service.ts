@@ -62,7 +62,7 @@ createReport( channel :Channel, mail){
   report.mail = mail,
   report.name = channel.name;
     report.id = this.afs.createId();
-  return this.afs.collection('reports').doc(report.id).set(Object.assign({}, report);
+  return this.afs.collection('reports').doc(report.id).set(Object.assign({}, report));
   
   }
 

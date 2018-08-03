@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import Channel from '../../entities/Channel';
+import Channel, { ChannelOptions } from '../../entities/Channel';
 import { Subscription } from 'rxjs';
 import { ChannelService } from '../../services/channel/channel.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +19,7 @@ export class ChannelFormComponent implements OnInit {
   private channelService : ChannelService
 ) { }
 
+channelOptions : ChannelOptions = new ChannelOptions();
   sub : Subscription;
   sub2 : Subscription;
 
@@ -29,6 +30,19 @@ export class ChannelFormComponent implements OnInit {
 
   ngOnInit() {
     this.channel = new Channel()
+    this.route.params.subscribe(params => {
+      this.name = params['channel'];
+      this.channelService.setChannelByName(this.name)
+
+  });
+  let aux = this.channelService.getChannelList().subscribe(
+    par=>{
+      this.channelService.setChannelByName(this.name);
+      //aux.unsubscribe();
+    }
+
+  );
+
     this.sub = this.channelService.getChannel().subscribe(
       channel => {
         this.channel = channel;
@@ -56,7 +70,7 @@ export class ChannelFormComponent implements OnInit {
     try {
       await this.channelService.createChannel(formValue);
       this.success=true;
-      
+      this.channel = new Channel();
     } catch (error) {
       console.log(error);
     }

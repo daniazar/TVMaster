@@ -51,4 +51,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
       duration: 2000,
     });
   }
+  openShows(channel : Channel){
+    console.log(channel.shows);
+    window.open(channel.shows);
+  }
 }

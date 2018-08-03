@@ -2,25 +2,39 @@
 
 
   <mat-form-field fxFlex>
-    <input matInput placeholder="name" formControlName="name">
+    <input matInput placeholder="Channel Name" formControlName="name">
   </mat-form-field>
 
   <mat-form-field fxFlex>
-    <input matInput placeholder="description" formControlName="desc">
+    <input matInput placeholder="Description" formControlName="desc">
   </mat-form-field>
 
   <mat-form-field fxFlex>
-    <input matInput placeholder="url" formControlName="originalUrl">
+    <input matInput placeholder="URL" formControlName="originalUrl">
   </mat-form-field>
 
   <mat-form-field fxFlex>
-    <input matInput placeholder="logo" formControlName="logo">
+    <input matInput placeholder="Logo" formControlName="logo">
+  </mat-form-field>
+  <mat-form-field fxFlex>
+      <input matInput placeholder="Shows" formControlName="shows">
+  </mat-form-field>
+  <mat-form-field fxFlex>
+      <mat-select placeholder="Language"  formControlName="lang">
+        <mat-option [value]="item.value" *ngFor="let item of channelOptions.languages">{{item.viewValue}}</mat-option>
+      </mat-select>
   </mat-form-field>
 
   <mat-form-field fxFlex>
-    <input matInput placeholder="country code" formControlName="country">
-  </mat-form-field>
-
-  
-  <button fxFlex="grow" type="submit" (click)="submitHandler()"  mat-raised-button [disabled]="channelFormGroup.invalid" color="primary" >value</button>
+      <mat-select placeholder="Country"  formControlName="country">
+        <mat-option [value]="item.value" *ngFor="let item of channelOptions.country">{{item.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+          <mat-select placeholder="Category"   formControlName="category">
+          <mat-option [value]="item.value" *ngFor="let item of channelOptions.genre">{{item.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+            
+  <button fxFlex="grow" type="submit" (click)="submitHandler()"  mat-raised-button [disabled]="channelFormGroup.invalid" color="primary" >Save Channel</button>
 </form>

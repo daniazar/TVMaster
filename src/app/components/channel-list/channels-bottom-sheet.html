@@ -1,10 +1,13 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let channel of channels | async">
-    <button class="channelButton" mat-raised-button mat-list-item routerLink="channel/{{channel.name}}" routerLinkActive="active" (click)="setChannel(channel)">
-        <img src={{channel.logo}}>
-      <mat-nav-list>
-        <span mat-line> {{channel.name}}</span>
-      </mat-nav-list>
+
+
+<div class="channeList" fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+    <button class="channelButton" mat-raised-button mat-list-item routerLink="channel/{{channel.name}}" routerLinkActive="active" (click)="setChannel(channel)"
+      fxFlex *ngFor="let channel of channels | async">
+        <img class="channelLogo" src={{channel.logo}}>
+        <mat-nav-list>
+          <span class="title" mat-line> {{channel.name}}</span>
+        </mat-nav-list>
     </button>
-  </mat-grid-tile>
-</mat-grid-list>
+  
+  </div>
+  

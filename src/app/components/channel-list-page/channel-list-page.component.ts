@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelService } from '../../services/channel/channel.service';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import Channel from '../../entities/Channel';
 
 @Component({

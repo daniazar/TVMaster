@@ -8,4 +8,10 @@
         width: 70px;
         height: 70px;
     }
+    mat-nav-list{
+        overflow-x: hidden;
+    }
+}
+.channeList{
+    min-height: min-content;
 }

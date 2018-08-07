@@ -44,3 +44,5 @@ package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
+src/environments/environment.prod.ts
+src/environments/*

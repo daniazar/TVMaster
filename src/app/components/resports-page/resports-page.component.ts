@@ -9,7 +9,7 @@ import { Observable } from '../../../../node_modules/rxjs';
 })
 export class ResportsPageComponent implements OnInit {
 
-  constructor(private reportService : ReportService) { }
+  constructor(public reportService : ReportService) { }
   
   ngOnInit() {
     this.reportService.loadReports();

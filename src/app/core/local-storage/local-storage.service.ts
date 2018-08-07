@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { CoreModule } from '../../../../node_modules/@angular/flex-layout';
 
 const APP_PREFIX = 'tvm-';
 
-@Injectable()
+@Injectable({
+  providedIn: CoreModule
+})
 export class LocalStorageService {
   constructor() {}
 

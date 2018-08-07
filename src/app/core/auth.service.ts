@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 
 import { Observable, of } from 'rxjs';
 import { switchMap} from 'rxjs/operators';
+import { CoreModule } from '../../../node_modules/@angular/flex-layout';
 
 interface User {
   uid: string;
@@ -18,7 +19,9 @@ interface User {
 }
 
 
-@Injectable()
+@Injectable({
+  providedIn: CoreModule
+})
 export class AuthService {
 
   userObservable: Observable<User | boolean>;

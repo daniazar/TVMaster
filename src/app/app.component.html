@@ -25,7 +25,7 @@
          <div class="spacer"></div>        
          <div *ngIf="auth.userObservable | async">
             <div *ngIf="auth.authenticated">
-                <button mat-button color="error" class="nav-button" routerLink="channelForm/" routerLinkActive="active">
+                <button mat-button color="error" class="nav-button" routerLink="channelForm/" (click)="newChannel()" routerLinkActive="active">
                 New Channel
           </button>
         </div>
@@ -45,12 +45,12 @@
   
     <mat-sidenav-container  class="container">
   
-        <mat-sidenav class="sidenav" #snav [mode]="side" [fixedInViewport]="false" >
+        <mat-sidenav class="sidenav" #snav mode="side" [fixedInViewport]="false" >
             <div fxLayout="column">
   
                 <app-channel-list ></app-channel-list>
 
-                <button *ngIf="auth.userObservable | async" mat-button color="error"  routerLink="channelForm/" routerLinkActive="active">
+                <button *ngIf="auth.userObservable | async" mat-button color="error"  (click)="newChannel()" routerLink="channelForm/" routerLinkActive="active">
                     New Channel
                 </button>
                <button mat-button routerLink="about" routerLinkActive="active">

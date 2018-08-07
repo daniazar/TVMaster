@@ -20,6 +20,7 @@ export default class Channel{
         this.shows = "";
         this.category = "news";
         this.lang = "es";
+        this.shows = "";
     }
 
 };

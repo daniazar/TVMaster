@@ -7,6 +7,7 @@ import {ThemeService} from './core/theme.service';
 import { AnimationsService } from './core';
 import { AuthService } from './core/auth.service';
 import { ChannelService } from './services/channel/channel.service';
+import Channel from './entities/Channel';
 
 const NIGHT_MODE_THEME = 'BLACK-THEME';
 @Component({
@@ -67,5 +68,9 @@ export class AppComponent implements OnInit{
       classList.remove(...toRemove);
     }
     classList.add(effectiveTheme);
+  }
+
+  newChannel(){
+    this.channelService.setChannel(new Channel());
   }
 }

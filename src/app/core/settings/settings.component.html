@@ -38,12 +38,12 @@
       <mat-slide-toggle
         matTooltip="Sorry, this feature is disabled in IE and EDGE"
         matTooltipPosition="before"
-        *ngIf="settings?.pageAnimationsDisabled"
+        *ngIf="wholePage"
         disabled>
       </mat-slide-toggle>
       <mat-slide-toggle
-        *ngIf="!settings?.pageAnimationsDisabled"
-        [checked]="settings?.pageAnimations"
+        *ngIf="!wholePage"
+        [checked]="wholePage"
         (change)="setAnimation()">
       </mat-slide-toggle>
     </div>
@@ -52,7 +52,7 @@
       <mat-placeholder>Navigation page elements slide up</mat-placeholder>
       <mat-slide-toggle
           [(ngModel)] = "slide"
-          [checked]="settings?.elementsAnimations"
+          [checked]="slide"
         (change)="setAnimation()">
       </mat-slide-toggle>
     </div>

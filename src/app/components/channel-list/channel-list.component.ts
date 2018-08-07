@@ -33,6 +33,8 @@ export class ChannelListComponent implements OnInit {
   @Component({
     selector: 'channels-bottom-sheet',
     templateUrl: 'channels-bottom-sheet.html',
+    styleUrls: ['./channels-bottom-sheet.scss']
+
   })
   export class ChannelSheet {
     constructor (private bottomSheetRef: MatBottomSheetRef<ChannelSheet>,@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,     private channelService : ChannelService 

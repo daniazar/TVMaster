@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
+import { CoreModule } from './core.module';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 
 export class ThemeSettings{
   theme: string;
@@ -13,6 +12,9 @@ export class ThemeSettings{
     this.nightMode = night;
   }
 }
+@Injectable({
+  providedIn: CoreModule
+})
 export class ThemeService {
   private themeSubject :BehaviorSubject<ThemeSettings>;
   private key = 'theme';

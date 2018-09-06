@@ -15,9 +15,9 @@ Bootstrap and package your project with Angular 6(+) and Electron (Typescript + 
 
 Currently runs with:
 
-- Angular v6.0.5
-- Electron v2.0.3
-- Electron Builder v20.13.4
+- Angular v6.1.2
+- Electron v2.0.7
+- Electron Builder v20.28.1
 
 With this sample, you can :
 
@@ -72,6 +72,10 @@ You can desactivate "Developer Tools" by commenting `win.webContents.openDevTool
 |`npm run electron:mac`|  On a MAC OS, builds your application and generates a `.app` file of your application that can be run on Mac |
 
 **Your application is optimised. Only /dist folder and node dependencies are included in the executable.**
+
+## You want to use a specific lib (like rxjs) in electron main thread ?
+
+You can to this! Just by importing your library in npm dependencies (not devDependencies) with `npm install --save`. It will be loaded by electron during build phase and added to the final package. Then use your library by importing it in `main.ts` file. Easy no ?
 
 ## Browser mode
 

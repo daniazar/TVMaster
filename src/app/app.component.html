@@ -1,102 +1,102 @@
 <mat-toolbar color="primary">
-  
-        <div fxShow="true" fxHide.gt-xs="true">
-  
-            <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      
-          </div>
-      
-        <button mat-button routerLink="">
-                <span>            <img class="logo" src="favicon.png"/>
-                </span>
-                <span>
-                {{ 'PAGES.HOME.TITLE' | translate }}
-            </span>
 
+    <div fxShow="true" fxHide.gt-xs="true">
+
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
         </button>
-  
-      <div class="menu" fxShow="true" fxHide.lt-sm="true"  fxLayout="row">
-  
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-  
-        <div class="spacer"></div>        
 
-         <app-channel-list class="nav-button"></app-channel-list>
-         <div class="spacer"></div>        
-         <div *ngIf="auth.userObservable | async">
-            <div *ngIf="auth.authenticated">
-                <button mat-button color="error" class="nav-button" routerLink="channelForm/" (click)="newChannel()" routerLinkActive="active">
-                New Channel
-          </button>
-        </div>
     </div>
- <button mat-button class="nav-button" routerLink="about" routerLinkActive="active">
-                About
-          </button>
-    
-         <div *ngIf="auth.userObservable | async; then authenticated else guest">
-                <!-- template will replace this div -->
-              </div>
-        <button mat-icon-button routerLink="settings" routerLinkActive="active" sclass="d-none d-sm-inline">
-                <mat-icon> settings</mat-icon>
-        </button>
-      </div>  
-    </mat-toolbar>
-  
-    <mat-sidenav-container  class="container">
-  
-        <mat-sidenav class="sidenav" #snav mode="side" [fixedInViewport]="false" >
-            <div fxLayout="column">
-  
-                <app-channel-list ></app-channel-list>
 
-                <button *ngIf="auth.userObservable | async" mat-button color="error"  (click)="newChannel()" routerLink="channelForm/" routerLinkActive="active">
+    <button mat-button routerLink="">
+        <span> <img class="logo" src="favicon.png" />
+        </span>
+        <span>
+            {{ 'PAGES.HOME.TITLE' | translate }}
+        </span>
+
+    </button>
+
+    <div class="menu" fxShow="true" fxHide.lt-sm="true" fxLayout="row">
+
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+        <div class="spacer"></div>
+
+        <app-channel-list class="nav-button"></app-channel-list>
+        <div class="spacer"></div>
+        <div *ngIf="auth.userObservable | async">
+            <div *ngIf="auth.authenticated">
+                <button mat-button color="error" class="nav-button" routerLink="channelForm/" (click)="newChannel()"
+                    routerLinkActive="active">
                     New Channel
                 </button>
-               <button mat-button routerLink="about" routerLinkActive="active">
-                      About
-                </button>
-          
-               <div *ngIf="auth.userObservable | async; then authenticated2 else guest">
-                      <!-- template will replace this div -->
-                    </div>
-              <button mat-button routerLink="settings" routerLinkActive="active" sclass="d-none d-sm-inline">
-                      <mat-icon> settings</mat-icon>
-              </button>
-        
-        
-              </div>
-              </mat-sidenav>
-            
-        <mat-sidenav-content >
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>  
-  
+            </div>
+        </div>
+        <button mat-button class="nav-button" routerLink="about" routerLinkActive="active">
+            About
+        </button>
+        <button mat-icon-button routerLink="sports" routerLinkActive="active" sclass="d-none d-sm-inline">
+            <mat-icon> event</mat-icon>
+        </button>
 
-    
+        <div *ngIf="auth.userObservable | async; then authenticated else guest">
+            <!-- template will replace this div -->
+        </div>
+        <button mat-icon-button routerLink="settings" routerLinkActive="active" sclass="d-none d-sm-inline">
+            <mat-icon> settings</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+
+    <mat-sidenav class="sidenav" #snav mode="side" [fixedInViewport]="false">
+        <div fxLayout="column">
+
+            <app-channel-list></app-channel-list>
+
+            <button *ngIf="auth.userObservable | async" mat-button color="error" (click)="newChannel()" routerLink="channelForm/"
+                routerLinkActive="active">
+                New Channel
+            </button>
+            <button mat-button routerLink="about" routerLinkActive="active">
+                About
+            </button>
+
+            <div *ngIf="auth.userObservable | async; then authenticated2 else guest">
+                <!-- template will replace this div -->
+            </div>
+            <button mat-button routerLink="settings" routerLinkActive="active" sclass="d-none d-sm-inline">
+                <mat-icon> settings</mat-icon>
+            </button>
+
+
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
 <mat-toolbar color="primary" class="footer">Footer</mat-toolbar>
 
 
 <ng-template #guest>
-    <button mat-stroked-button routerLink="profile" class="sign-in-button"
-     routerLinkActive="active">
-        {{ 'PAGES.HOME.LOGIN' | translate }}  
+    <button mat-stroked-button routerLink="profile" class="sign-in-button" routerLinkActive="active">
+        {{ 'PAGES.HOME.LOGIN' | translate }}
     </button>
 </ng-template>
 <ng-template #authenticated>
-        <button 
-        routerLink="profile" routerLinkActive="active"
-                mat-icon-button
-                >
-        <mat-icon >account_circle</mat-icon>
-        </button>
+    <button routerLink="profile" routerLinkActive="active" mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+    </button>
 </ng-template>
 <ng-template #authenticated2>
-    <button 
-    routerLink="profile" routerLinkActive="active"
-            mat-button
-            >
-    <mat-icon >account_circle</mat-icon>
+    <button routerLink="profile" routerLinkActive="active" mat-button>
+        <mat-icon>account_circle</mat-icon>
     </button>
 </ng-template>

@@ -7,54 +7,59 @@ import { ChannelPageComponent } from './components/channel-page/channel-page.com
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ChannelFormComponent } from './components/channel-form/channel-form.component';
 import { ResportsPageComponent } from './components/resports-page/resports-page.component';
+import { SportsCalendarComponent } from './components/sports-calendar/sports-calendar.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent
-    },
-    {
-        path: 'profile',
-        component: UserProfileComponent,
-        data: {
-          title: 'User'
-        }
-      },
-      {
-        path: 'channel/:channel',
-        component: ChannelPageComponent,
-        data: {
-          title: 'Channel'
-        }
-      },
-      {
-        path: 'settings',
-        component: SettingsComponent
-    },
-    {
-      path: 'channelForm/:channel',
-      component: ChannelFormComponent
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    data: {
+      title: 'User'
+    }
+  },
+  {
+    path: 'channel/:channel',
+    component: ChannelPageComponent,
+    data: {
+      title: 'Channel'
+    }
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
+  },
+  {
+    path: 'channelForm/:channel',
+    component: ChannelFormComponent
   },
   {
     path: 'channelForm',
     component: ChannelFormComponent
-},
-{
-  path: 'reports',
-  component: ResportsPageComponent
-},
-  {
-      path: 'about',
-      component: AboutPageComponent
   },
-    {
-        path: '**',
-        redirectTo: ''
-      }
+  {
+    path: 'reports',
+    component: ResportsPageComponent
+  },
+  {
+    path: 'about',
+    component: AboutPageComponent
+  },
+  {
+    path: 'sports',
+    component: SportsCalendarComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

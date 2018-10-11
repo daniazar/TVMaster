@@ -10,10 +10,10 @@ import { AnimationsService } from './animations/animations.service';
 import { AuthService } from './auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import {ThemeService} from './theme.service'; 
+import { ThemeService } from './theme.service';
 import { SettingsComponent } from './settings/settings.component';
-import { MatIconModule, MatSelectModule, MatSlideToggleModule, MatCardModule } from '../../../node_modules/@angular/material';
-import { FormsModule } from '../../../node_modules/@angular/forms';
+import { MatIconModule, MatSelectModule, MatSlideToggleModule, MatCardModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import { FormsModule } from '../../../node_modules/@angular/forms';
     FormsModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatCardModule       
+    MatCardModule
   ],
   exports: [
   ],

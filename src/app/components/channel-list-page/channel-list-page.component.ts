@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelService } from '../../services/channel/channel.service';
 import { Observable } from 'rxjs';
 import Channel from '../../entities/Channel';
+import { ChannelService } from '../../services/channel/channel.service';
 
 @Component({
   selector: 'app-channel-list-page',
@@ -10,9 +10,9 @@ import Channel from '../../entities/Channel';
 })
 export class ChannelListPageComponent implements OnInit {
 
-  constructor(    private channelService : ChannelService ) { }
-  channels : Observable<Channel[]>;
-  
+  constructor(private channelService: ChannelService) { }
+  channels: Observable<Channel[]>;
+
 
   ngOnInit() {
     this.loadChannels();
@@ -22,7 +22,7 @@ export class ChannelListPageComponent implements OnInit {
   loadChannels() {
     this.channels = this.channelService.getChannelList();
   }
-  setChannel(channel: Channel){
+  setChannel(channel: Channel) {
     this.channelService.setChannel(channel);
   }
 }

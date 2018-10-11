@@ -17,7 +17,7 @@
     </mat-card-header>
     <mat-card-content class="player">
       <div class="player" *ngIf="channel.name">
-        <iframe class="playerFrame" [src]="channel.url" frameborder="0" allowfullscreen></iframe>
+        <iframe class="playerFrame" sandbox="allow-scripts allow-same-origin" [src]="channel.url" frameborder="0" allowfullscreen></iframe>
       </div>
     </mat-card-content>
 </div>

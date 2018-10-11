@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
+import { CoreModule } from '../../../../node_modules/@angular/flex-layout';
 
 export class AnimationSettings{
   
@@ -11,7 +12,9 @@ export class AnimationSettings{
   }
 }
 
-@Injectable()
+@Injectable({
+  providedIn: CoreModule
+})
 export class AnimationsService {
   constructor() {}
 

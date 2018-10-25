@@ -1,23 +1,24 @@
 <div class="playerConatiner" *ngIf="channel">
-    <mat-card-header>
-      <mat-toolbar  *ngIf="!login" color="error" class="mat-elevation-z6">
-        <span>Please Login to report a channel</span>
-      </mat-toolbar>
-      <button mat-icon-button routerLink="/channelForm/{{channel.name}}">
-        <mat-icon mat-card-avatar aria-label="label" color="accent">edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)=openShows(channel)>
-          <mat-icon mat-card-avatar aria-label="label" color="accent">tv</mat-icon>
-        </button>
-      <button mat-icon-button (click)=reportChannel(channel)>
-        <mat-icon mat-card-avatar aria-label="label" color="error">error</mat-icon>
-      </button>
-        <mat-card-title>{{channel.name}}</mat-card-title>
-      <mat-card-subtitle>{{channel.desc}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="player">
-      <div class="player" *ngIf="channel.name">
-        <iframe class="playerFrame" sandbox="allow-scripts allow-same-origin" [src]="channel.url" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-toolbar *ngIf="!login" color="error" class="mat-elevation-z6">
+      <span>Please Login to report a channel</span>
+    </mat-toolbar>
+    <button mat-icon-button routerLink="/channelForm/{{channel.name}}">
+      <mat-icon mat-card-avatar aria-label="label" color="accent">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)=openShows(channel)>
+      <mat-icon mat-card-avatar aria-label="label" color="accent">tv</mat-icon>
+    </button>
+    <button mat-icon-button (click)=reportChannel(channel)>
+      <mat-icon mat-card-avatar aria-label="label" color="error">error</mat-icon>
+    </button>
+    <mat-card-title>{{channel.name}}</mat-card-title>
+    <mat-card-subtitle>{{channel.desc}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="player">
+    <div class="player" *ngIf="channel.name">
+      <iframe class="playerFrame" sandbox="allow-scripts allow-same-origin" [src]="channel.urls[0]" frameborder="0"
+        allowfullscreen></iframe>
+    </div>
+  </mat-card-content>
 </div>

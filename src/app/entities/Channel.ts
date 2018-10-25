@@ -5,26 +5,25 @@ export default class Channel {
   id?: string;
   url: string;
   urls: any[];
-  originalUrl: any;
+  originalUrl: any[];
   category: string;
   lang: string;
   logo: string;
   desc: string;
   shows: string;
   constructor() {
-    this.name = "";
-    this.country = "ar";
+    this.name = '';
+    this.country = 'ar';
     this.urls = [];
-    this.logo = "";
-    this.desc = "";
-    this.originalUrl = "";
-    this.shows = "";
-    this.category = "news";
-    this.lang = "es";
-    this.shows = "";
+    this.logo = '';
+    this.desc = '';
+    this.originalUrl = [];
+    this.shows = '';
+    this.category = 'news';
+    this.lang = 'es';
   }
 
-};
+}
 
 export class ChannelOptions {
   public languages = [

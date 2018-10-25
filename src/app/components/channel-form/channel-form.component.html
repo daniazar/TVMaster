@@ -1,4 +1,4 @@
-<form fxLayout="column"  [formGroup]="channelFormGroup" [hidden] = "success" (ngsubmit)="submitHandler()">
+<form fxLayout="column" [formGroup]="channelFormGroup" [hidden]="success" (ngsubmit)="submitHandler()">
 
 
   <mat-form-field fxFlex>
@@ -8,33 +8,39 @@
   <mat-form-field fxFlex>
     <input matInput placeholder="Description" formControlName="desc">
   </mat-form-field>
-
-  <mat-form-field fxFlex>
-    <input matInput placeholder="URL" formControlName="originalUrl">
-  </mat-form-field>
-
+  <div>List of URL: <button type="submit" (click)="addUrl()" mat-fab color="accent">+</button>
+  </div><br><br>
+  <div formArrayName="originalUrl">
+    <div *ngFor="let url of originalUrl; let i = index;" class="url" [formGroup]="index">
+      <mat-form-field fxFlex>
+        <input matInput placeholder="URL: {{index + 1}}" formControlName="originalUrl[index].uri">
+      </mat-form-field>
+    </div>
+  </div>
+  {{channelFormGroup.value.originalUrl}}
   <mat-form-field fxFlex>
     <input matInput placeholder="Logo" formControlName="logo">
   </mat-form-field>
   <mat-form-field fxFlex>
-      <input matInput placeholder="Shows" formControlName="shows">
+    <input matInput placeholder="Shows" formControlName="shows">
   </mat-form-field>
   <mat-form-field fxFlex>
-      <mat-select placeholder="Language"  formControlName="lang">
-        <mat-option [value]="item.value" *ngFor="let item of channelOptions.languages">{{item.viewValue}}</mat-option>
-      </mat-select>
+    <mat-select placeholder="Language" formControlName="lang">
+      <mat-option [value]="item.value" *ngFor="let item of channelOptions.languages">{{item.viewValue}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field fxFlex>
-      <mat-select placeholder="Country"  formControlName="country">
-        <mat-option [value]="item.value" *ngFor="let item of channelOptions.country">{{item.viewValue}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field fxFlex>
-          <mat-select placeholder="Category"   formControlName="category">
-          <mat-option [value]="item.value" *ngFor="let item of channelOptions.genre">{{item.viewValue}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-            
-  <button fxFlex="grow" type="submit" (click)="submitHandler()"  mat-raised-button [disabled]="channelFormGroup.invalid" color="primary" >Save Channel</button>
+    <mat-select placeholder="Country" formControlName="country">
+      <mat-option [value]="item.value" *ngFor="let item of channelOptions.country">{{item.viewValue}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <mat-select placeholder="Category" formControlName="category">
+      <mat-option [value]="item.value" *ngFor="let item of channelOptions.genre">{{item.viewValue}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button fxFlex="grow" class="submitButton" type="submit" (click)="submitHandler()" mat-raised-button [disabled]="channelFormGroup.invalid"
+    color="primary">Save Channel</button>
 </form>

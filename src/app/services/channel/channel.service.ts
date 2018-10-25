@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
+import { DomSanitizer } from '@angular/platform-browser';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from 'angularfire2/firestore';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import Channel from '../../entities/Channel';
-import { unwatchFile } from 'fs';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +22,7 @@ export class ChannelService {
   private channelsSubject = new BehaviorSubject<Channel[]>(null);
 
   loadChannels() {
-    console.log("loading channels ");
+    console.log('loading channels ');
     this.channelCollection = this.afs.collection<Channel>('channels', ref => ref.orderBy('name', 'desc'));
     this.channels = this.channelCollection.valueChanges();
 
@@ -34,7 +32,7 @@ export class ChannelService {
       channels => {
         this.currChannel = channels;
         console.log(this.currChannel);
-        this.sendChannelList(channels)
+        this.sendChannelList(channels);
         this.sub.unsubscribe();
       }
     );
@@ -51,14 +49,14 @@ export class ChannelService {
 
   getChannelList(): Observable<Channel[]> {
     return this.channelsSubject.asObservable();
-    //return this.channels;
+    // return this.channels;
   }
   getChannel(): Observable<Channel> {
     return this.channelSubject.asObservable();
   }
   setChannelByName(name: string) {
     if (this.currChannel) {
-      let chan = this.currChannel.find(
+      const chan = this.currChannel.find(
         element => name === (element.name)
       );
       this.setChannel(chan);
@@ -69,33 +67,33 @@ export class ChannelService {
     if (!channel) {
       return;
     }
-    if (channel.url) {
-      if (!channel.urls) {
-        channel.urls = [channel.url];
-      } else {
-        channel.urls.push(channel.url);
-      }
+    if (typeof channel.originalUrl === 'string') {
+      channel.originalUrl = [channel.originalUrl];
     }
-    channel.urls.forEach(element => {
-      if (element.includes('youtube')) {
+    channel.urls = JSON.parse(JSON.stringify(channel.originalUrl));
+    channel.urls = channel.urls.map(element => {
+      if (element.includes && element.includes('youtube')) {
         element = 'https://www.youtube.com/embed/' + this.youtube_parser(element);
       }
-      element = this.sanitizer.bypassSecurityTrustResourceUrl(element);
+      if (!element.changingThisBreaksApplicationSecurity) {
+        return element = this.sanitizer.bypassSecurityTrustResourceUrl(element);
+      }
     });
+    console.log(channel);
     this.channelSubject.next(channel);
   }
 
   youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[7].length === 11) ? match[7] : false;
   }
 
   createChannel(channel: Channel) {
     if (!channel.id) {
       channel.id = this.afs.createId();
     }
-    channel.url = channel.originalUrl;
+    channel.urls = channel.originalUrl;
     return this.afs.collection('channels').doc(channel.id).set(channel);
 
   }

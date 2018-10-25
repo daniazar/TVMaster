@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {ChannelService} from '../../services/channel/channel.service';
-import Channel from '../../entities/Channel';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ReportService } from '../../services/report.service';
-import { AuthService } from '../../core/auth.service';
 import { MatSnackBar } from '../../../../node_modules/@angular/material';
+import { AuthService } from '../../core/auth.service';
+import Channel from '../../entities/Channel';
+import { ChannelService } from '../../services/channel/channel.service';
+import { ReportService } from '../../services/report.service';
 
 @Component({
   selector: 'app-player',
@@ -13,35 +13,36 @@ import { MatSnackBar } from '../../../../node_modules/@angular/material';
 })
 export class PlayerComponent implements OnInit, OnDestroy {
 
-  login : boolean = true;
-  constructor( private channelService : ChannelService,
-    private reportService : ReportService,
-    private auth : AuthService,
+  login = true;
+  constructor(private channelService: ChannelService,
+    private reportService: ReportService,
+    private auth: AuthService,
     public snackBar: MatSnackBar
 
   ) { }
-  sub : Subscription;
-  channel : Channel;
+  sub: Subscription;
+  channel: Channel;
   ngOnInit() {
     this.login = true;
     this.sub = this.channelService.getChannel().subscribe(
       channel => {
         this.channel = channel;
+        console.log(channel);
       }
     );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  reportChannel(channel : Channel){
-    if( this.auth.authenticated){
+  reportChannel(channel: Channel) {
+    if (this.auth.authenticated) {
       this.login = true;
-      this.reportService.createReport(channel, this.auth.currentUser.email)
-      let snackBarRef = this.snackBar.open('Channel Reported');
+      this.reportService.createReport(channel, this.auth.currentUser.email);
+      const snackBarRef = this.snackBar.open('Channel Reported');
 
-    }else{
+    } else {
       this.login = false;
     }
   }
@@ -51,7 +52,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       duration: 2000,
     });
   }
-  openShows(channel : Channel){
+  openShows(channel: Channel) {
     console.log(channel.shows);
     window.open(channel.shows);
   }

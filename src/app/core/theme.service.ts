@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CoreModule } from './core.module';
-
-
 
 export class ThemeSettings {
   theme: string;
@@ -13,7 +10,7 @@ export class ThemeSettings {
   }
 }
 @Injectable({
-  providedIn: CoreModule
+  providedIn: 'root'
 })
 export class ThemeService {
   private themeSubject: BehaviorSubject<ThemeSettings>;

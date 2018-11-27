@@ -13,7 +13,7 @@
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "main": "main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
@@ -28,7 +28,6 @@
               "src/styles.scss",
               "src/theme.scss",
               "node_modules/material-design-icons/iconfont/material-icons.css"
-
             ],
             "scripts": []
           },

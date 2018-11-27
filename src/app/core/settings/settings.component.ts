@@ -1,13 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ThemeService, ThemeSettings } from '../theme.service';
-import { AnimationsService, AnimationSettings } from '../animations/animations.service';
+import { AnimationSettings, AnimationsService } from '../animations/animations.service';
 import { routeAnimations } from '../animations/route.animations';
+import { ThemeService, ThemeSettings } from '../theme.service';
 
 
 @Component({
-  selector: 'anms-settings',
+  selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   animations: [routeAnimations]
@@ -22,26 +21,26 @@ export class SettingsComponent implements OnInit, OnDestroy {
     { value: 'NATURE-THEME', label: 'Nature' },
     { value: 'BLACK-THEME', label: 'Dark' }
   ];
-  nightMode : boolean = false;
-  currentTheme : number = 0;
-  wholePage : boolean = true;
-  slide : boolean = true;
+  nightMode = false;
+  currentTheme = 0;
+  wholePage = true;
+  slide = true;
 
-  constructor(private themeService : ThemeService, private animationService : AnimationsService) {
+  constructor(private themeService: ThemeService, private animationService: AnimationsService) {
 
   }
 
-  setTheme( ){
+  setTheme() {
     console.log(this.currentTheme);
-    this.themeService.setTheme(new ThemeSettings( this.themes[this.currentTheme].value, this.nightMode));  
+    this.themeService.setTheme(new ThemeSettings(this.themes[this.currentTheme].value, this.nightMode));
   }
 
-  setAnimation( ){
-    this.animationService.setAnimation(new AnimationSettings( this.wholePage, this.slide));  
+  setAnimation() {
+    this.animationService.setAnimation(new AnimationSettings(this.wholePage, this.slide));
   }
 
   ngOnInit() {
-    //this.setTheme();
+    // this.setTheme();
   }
 
   ngOnDestroy(): void {

@@ -1,18 +1,12 @@
-[![Angular Logo](./logo-angular.jpg)](https://angular.io/) [![Electron Logo](./logo-electron.jpg)](https://electron.atom.io/)
+# Welcome to TV Master
 
-[![Travis Build Status][build-badge]][build]
-[![Dependencies Status][dependencyci-badge]][dependencyci]
-[![Make a pull request][prs-badge]][prs]
+[![Angular Logo](./logo-angular.jpg)](https://angular.io/) [![Electron Logo](./logo-electron.jpg)](https://electron.atom.io/)
 [![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE.md)
 
-[![Watch on GitHub][github-watch-badge]][github-watch]
-[![Star on GitHub][github-star-badge]][github-star]
-[![Tweet][twitter-badge]][twitter]
-
-# Introduction
+## Introduction
 
 Based on angular electron starter seed.
-https://github.com/maximegris/angular-electron.git
+<https://github.com/maximegris/angular-electron.git>
 
 Tv Master is a single page application to watch live tv streems for free. Please fell free to try the current implementation at:
 
@@ -20,22 +14,20 @@ tv.appzar.com.ar
 
 Currently runs with:
 
-- Angular v6.1.2
-- Electron v2.0.7
+- Angular v7.0.3
+- Electron v3.0.2
 - Electron Builder v20.28.1
 - Firebase backend
 
 It works as a web site, or electron packaged app.
 
 ## Known issues
+
 The streams are imported into iframes. To improve electron security it shuold be using webviews when building for desktop application.
 
 On a Website there are permission issues with some streams and CORS errors on others. These can be bypassed on a desktop build.
 
 Regarding HTTPS and HTTP. When using a HTTPS protocol for the website there is the mixed content problem with browsers. On Dekstop OS you can bypass this check in the browser. But on mobile this issue cant be bypass so try to use a http protocol for hosting. This issue is caused because some streams are only available by HTTP.
-
-
-
 
 ## Getting Started
 
@@ -53,7 +45,6 @@ npm install
 
 There is an issue with `yarn` and `node_modules` that are only used in electron on the backend when the application is built by the packager. Please use `npm` as dependencies manager.
 
-
 If you want to generate Angular components with Angular-cli , you **MUST** install `@angular/cli` in npm global context.
 Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
 
@@ -67,9 +58,9 @@ npm install -g @angular/cli
 
 Voila! You can use your Angular + Electron app in a local development environment with hot reload !
 
-The application code is managed by `main.ts`. In this sample, the app runs with a simple Angular App (http://localhost:4200) and an Electron window.
+The application code is managed by `main.ts`. In this sample, the app runs with a simple Angular App (<http://localhost:4200>) and an Electron window.
 The Angular component contains an example of Electron and NodeJS native lib import.
-You can desactivate "Developer Tools" by commenting `win.webContents.openDevTools();` in `main.ts`.
+You can disable "Developer Tools" by commenting `win.webContents.openDevTools();` in `main.ts`.
 
 ## Included Commands
 

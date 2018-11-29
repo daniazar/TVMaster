@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import Channel, { ChannelOptions } from '../../entities/Channel';
@@ -10,14 +10,19 @@ import { ChannelService } from '../../services/channel/channel.service';
   templateUrl: './channel-form.component.html',
   styleUrls: ['./channel-form.component.scss']
 })
-export class ChannelFormComponent implements OnInit, OnDestroy {
+export class ChannelFormComponent implements OnInit, OnDestroy, AfterViewInit {
 
   channelFormGroup: FormGroup;
-
+  createCardForm: any;
   constructor(private formBuilder: FormBuilder
     , private route: ActivatedRoute,
     private channelService: ChannelService
-  ) { }
+  ) {
+    this.createCardForm = this.formBuilder.group({
+      collections: this.formBuilder.array([]),
+      reactiveCollections: null
+    });
+  }
 
   channelOptions: ChannelOptions = new ChannelOptions();
   sub: Subscription;
@@ -42,7 +47,6 @@ export class ChannelFormComponent implements OnInit, OnDestroy {
       }
 
     );
-
     this.sub = this.channelService.getChannel().subscribe(
       channel => {
         this.channel = channel;
@@ -50,23 +54,39 @@ export class ChannelFormComponent implements OnInit, OnDestroy {
           this.channel = new Channel();
         }
         // channel.originalUrl.push('');
+        const controls = this.channel.originalUrl.map(url => new FormControl(url));
         this.channelFormGroup = this.formBuilder.group({
           'country': this.channel.country,
           'name': this.channel.name,
           'id': this.channel.id,
           'logo': this.channel.logo,
           'desc': this.channel.desc,
-          'originalUrl': this.formBuilder.array(this.createItem()),
+          'originalUrl': this.formBuilder.array([]),
           'shows': this.channel.shows,
           'category': this.channel.category,
           'lang': this.channel.lang,
         });
-        this.channelFormGroup.value.originaUrl.setValue(this.channel.originalUrl);
+        this.channel.originalUrl.forEach(url => {
+          this.originalUrl.push(this.formBuilder.control(url));
+        });
         console.log('channel: ');
         console.log(this.channel);
         console.log('channelFormGroup: ');
         console.log(this.channelFormGroup);
       });
+
+  }
+
+  get originalUrl() {
+    return this.channelFormGroup.get('originalUrl') as FormArray;
+  }
+
+  addOriginalUrl() {
+    this.originalUrl.push(this.formBuilder.control(''));
+  }
+
+  ngAfterViewInit() {
+
   }
   createItem(): any {
     return {

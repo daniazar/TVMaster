@@ -15,10 +15,21 @@
     <mat-card-title>{{channel.name}}</mat-card-title>
     <mat-card-subtitle>{{channel.desc}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content class="player">
+
+  <mat-card-content *ngIf="channel.urls.length === 1" class="player">
     <div class="player" *ngIf="channel.name">
       <iframe class="playerFrame" sandbox="allow-scripts allow-same-origin" [src]="channel.urls[0]" frameborder="0"
         allowfullscreen></iframe>
     </div>
   </mat-card-content>
+  <mat-tab-group *ngIf="channel.urls.length > 1">
+    <mat-tab *ngFor="let item of channel.urls; let i=index;" label="Option {{i}}">
+      <mat-card-content class="player">
+        <div class="player" *ngIf="channel.name">
+          <iframe class="playerFrame" sandbox="allow-scripts allow-same-origin" [src]="item" frameborder="0"
+            allowfullscreen></iframe>
+        </div>
+      </mat-card-content>
+    </mat-tab>
+  </mat-tab-group>
 </div>
